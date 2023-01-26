@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="d-flex justify-content-between bg-warning">
+        <h1>Wrestler's Workforce</h1>
+        <a href="/logout" class="btn btn-info text-center">Logout</a>
+    </div>
+    <h1 class="text-center">Add a Position</h1>
+    <form action="/position/create" method="post" class="col-md-4 offset-md-4 bg-dark text-light p-2">
+        <input type="hidden" name="promoter_id" value="{{session.promoter_id}}" >
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" name="name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Description:</label>
+            <textarea name="description" rows="6" cols="50" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Attribute Needed:</label>
+            <select id="type_needed" name="type_needed" class="form-control">
+                <option value="none" selected disabled hidden>Select an Option</option>
+                <option value="powerhouse">Powerhouse</option>
+                <option value="high-flyer">High-Flyer</option>
+                <option value="luchador">Luchador</option>
+                <option value="technical">Technical</option>
+                <option value="brawler">Brawler</option>
+                <option value="hardcore">Hardcore</option>
+                <option value="tag team">Tag Team</option>
+                <option value="japanese">Japanese</option>
+            </select>
+        </div>
+        <div class="d-flex justify-content-center">
+            <input type="submit" value="Add Position" class="btn btn-primary">
+        </div>
+    </form>
+</body>
+</html>

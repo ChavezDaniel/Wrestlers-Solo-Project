@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="padding: 10%; ">
+        <div class="d-flex justify-content-between bg-warning border border-dark ">
+            <h1>Welcome {{session.full_name}}</h1>
+            <a href="/logout" class="btn btn-info text-center">Logout</a>
+        </div>
+        <H2 class="text-center">Edit Your Bio</H2>
+        <form action="/wrestler/edit_bio" method="post" class="col-md-4 offset-md-4 bg-dark text-light ">
+            <input type="hidden" name="id" value="{{one_bio.id}}" >
+            <div class="form-group">
+                <label>Height:</label>
+                <input type="number" name="height" min ="24" max="96" value="{{one_bio.height}}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Weight:</label>
+                <input type="number" name="weight" min ="100" max="700" value="{{one_bio.weight}}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Age:</label>
+                <input type="number" name="age" min="18" max="85" value="{{one_bio.age}}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Years of Experience:</label>
+                <input type="number" name="years_of_experience" min="0" value="{{one_bio.years_of_experience}}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Nationality:</label>
+                <input type="text" name="nationality" value="{{one_bio.nationality}}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Pick your strongest Attribute:</label>
+                <select id="strongest" name="strongest">
+                    <option value="{{one_bio.strongest}}" class="form-control" selected hidden>{{one_bio.strongest}}</option>
+                    <option value="powerhouse">Powerhouse</option>
+                    <option value="high-flyer">High-Flyer</option>
+                    <option value="luchador">Luchador</option>
+                    <option value="technical">Technical</option>
+                    <option value="brawler">Brawler</option>
+                    <option value="hardcore">Hardcore</option>
+                    <option value="tag team">Tag Team</option>
+                    <option value="japanese">Japanese</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Pick your next strongest Attribute:</label>
+                <select id="second_strongest" name="second_strongest">
+                    <option value="{{one_bio.second_strongest}}" class="form-control" selected hidden>{{one_bio.second_strongest}}</option>
+                    <option value="powerhouse">Powerhouse</option>
+                    <option value="high-flyer">High-Flyer</option>
+                    <option value="luchador">Luchador</option>
+                    <option value="technical">Technical</option>
+                    <option value="brawler">Brawler</option>
+                    <option value="hardcore">Hardcore</option>
+                    <option value="tag team">Tag Team</option>
+                    <option value="japanese">Japanese</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Short Bio:</label>
+                <textarea name="short_bio" rows="6" cols="50" class="form-control">{{one_bio.short_bio}}</textarea>
+            </div>
+            <div class="text-center pb-2">
+                <input id="button" type="submit" value="Update Your Profile">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

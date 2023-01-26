@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="d-flex justify-content-between bg-warning border border-dark">
+        <h1>Congratulations {{session.full_name}}!!!</h1>
+        <a href="/logout" class="btn btn-info text-center">Logout</a>
+    </div>
+    <div class="bg-success text-center p-2 col-8 offset-md-2">
+        <h2>You have finished your profile! Get ready to receive emails from promoters!</h2>
+    </div>
+
+    <div class="text-center" >
+        <img src="{{ url_for('static', filename='/img/istockphoto-938635868-612x612.jpg') }}">
+    </div>
+    <h4 class="text-center">If you need to update your information click <a href="/wrestler/bio/edit/{{session.wrestler_id}}">here</a>.</h4>
+</body>
+</html>

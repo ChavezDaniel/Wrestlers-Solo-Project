@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="d-flex justify-content-between bg-warning border border-dark ">
+        <h1>Wrestler's Workforce</h1>
+        <div>
+            <a href="/promoter/home/{{session.promoter_id}}" class="btn btn-info text-center">Home Page</a>
+            <a href="/logout" class="btn btn-info text-center">Logout</a>
+        </div>
+    </div>
+    {% for info in one_bio%}
+        <h1 class="text-center">{{info.first_name}} {{info.last_name}}</h1>
+        <div class="border border-info rounded bg-light m-2 p-2">
+            <h3>Height: {{info.height}} inches</h3>
+        </div>
+        <div class="border border-info rounded bg-light m-2 p-2">
+            <h3>Weight: {{info.weight}} lbs</h3>
+        </div>
+        <div class="border border-info rounded bg-light m-2 p-2">
+            <h3>Experience: {{info.years_of_experience}} years</h3>
+        </div>
+        <div class="border border-info rounded bg-light m-2 p-2">
+            <h3>Nationality: {{info.nationality}}</h3>
+        </div>
+        <div class="border border-info rounded bg-light m-2 p-2">
+            <h3>This wrestler is best suited for these types of wrestling: <u>{{info.strongest}}</u> & <u>{{info.second_strongest}}</u></h3>
+        </div>
+        <div class="border border-info rounded bg-light m-2 p-2">
+            <h3>Short bio: {{info.short_bio}}</h3>
+        </div>
+        <p class="text-center">If you want to contact this wrestler please use this email: {{info.email}}</p>
+    {% endfor %}
+</body>
+</html>

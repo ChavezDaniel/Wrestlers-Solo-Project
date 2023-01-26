@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my_style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='my_script.js') }}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body onload="filter_wrestlers_by_type()">
+    <div class="d-flex justify-content-between bg-warning border border-dark ">
+        <h1>Wrestler's Workforce</h1>
+        <div>
+            <a href="/promoter/home/{{session.promoter_id}}" class="btn btn-info text-center">Home Page</a>
+            <a href="/logout" class="btn btn-info text-center">Logout</a>
+        </div>
+    </div>
+    <h1 class="text-center">{{this_position.name}}</h1>
+    <p class="text-center">Type of wrestling or wrestler needed is "{{this_position.type_needed}}."</p>
+    
+    <div>
+        <p class="text-center">(<em>You may enter in another type or erase the search bar to see all wrestlers.</em>)</p>
+        <input type="text" id="myInput" onkeyup="filter_wrestlers_by_type()" value="{{this_position.type_needed}}">
+        <table id="myTable">
+            <h4 class="text-center"><u>Wrestlers Best Suited for This Position</u></h4>
+            <tr>
+                <th>Name</th>
+                <th>Attributes</th>
+                <th>Experience</th>
+            </tr>
+            {% for wrestler in all_wrestlers %}
+                <tr>
+                    <td><a href="/wrestler/{{wrestler.creator.id}}">{{wrestler.creator.first_name}} {{wrestler.creator.last_name}}</a></td>
+                    <td class="type">{{wrestler.strongest}} & {{wrestler.second_strongest}}</td>
+                    <td>{{wrestler.years_of_experience}} years</td>
+                </tr>
+            {% endfor %}
+        </table>
+    
+    </div>
+</body>
+</html>

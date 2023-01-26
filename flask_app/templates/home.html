@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="d-flex justify-content-between bg-warning">
+        <h1>Welcome to Wrestler's Workforce, {{session.name}}!</h1>
+        <a href="/logout" class="btn btn-info text-center">Logout</a>
+    </div>
+    <div class="d-flex justify-content-around">
+        <div class="col-4 p-2 border border-dark">
+            <div class="d-flex justify-content-center"  class="m-2">
+                <button type="button" class="bg-primary"><a href='/position' class="text-light">List a New Position</a></button>
+            </div>
+            <h3 class="text-center">Positions to Fill</h3>
+            {% for one_position in this_promoter.positions %}
+                <div class="m-2">
+                    <a href="/position/view/{{one_position.id}}">{{one_position.name}}</a>
+                    |
+                    <a href="/position/delete/{{one_position.id}}">Delete</a>
+                </div>
+    
+            {% endfor %}
+        </div>
+        <div class="overflow-auto"  style="max-width: 800px; max-height: 750px;">
+            <h3 class="text-center bg-light">All Wrestlers</h3>
+            {% for wrestler in all_wrestlers %}
+                <div class="border border-dark p-2">
+                    <p>Name: <a href="/wrestler/{{wrestler.creator.id}}">{{wrestler.creator.first_name}} {{wrestler.creator.last_name}}</a> </p>
+                    <p>Attributes: {{wrestler.strongest}} | {{wrestler.second_strongest}}</p>
+                    <p>Bio: {{wrestler.short_bio}}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
